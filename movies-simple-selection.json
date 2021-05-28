@@ -1,0 +1,3 @@
+{ "create" : { "_index": "movies", "_id" : "193609" } }
+{ "id": "193609", "title": "Andrew Dice Clay: Dice Rules", "year":1991, "genre":["Comedy"] }
+
