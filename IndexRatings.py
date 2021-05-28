@@ -33,11 +33,14 @@ def readRatings():
 def readTags():
     csvfile = open('ml-latest-small/tags.csv', 'r', encoding="utf8")
 
+    titleLookup = readMovies()
+
     reader = csv.DictReader( csvfile )
     for line in reader:
         tag = {}
         tag['user_id'] = int(line['userId'])
         tag['movie_id'] = int(line['movieId'])
+        tag['title'] = titleLookup[line['movieId']]
         tag['tag'] = str(line['tag'])
         tag['timestamp'] = float(line['timestamp'])
         yield tag
