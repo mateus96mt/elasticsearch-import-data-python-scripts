@@ -30,14 +30,28 @@ def readRatings():
         rating['timestamp'] = int(line['timestamp'])
         yield rating
 
+def readTags():
+    csvfile = open('ml-latest-small/tags.csv', 'r', encoding="utf8")
+
+    reader = csv.DictReader( csvfile )
+    for line in reader:
+        tag = {}
+        tag['user_id'] = int(line['userId'])
+        tag['movie_id'] = int(line['movieId'])
+        tag['tag'] = str(line['tag'])
+        tag['timestamp'] = float(line['timestamp'])
+        yield tag
 
 passFile = open('ubuntu-server-password.pass', 'r', encoding="utf8")
 password = passFile.readline()
-
-# es = elasticsearch.Elasticsearch()
 es = elasticsearch.Elasticsearch(['mateus:' + password + '@127.0.0.1'])
 
 
 es.indices.delete(index="ratings",ignore=404)
 deque(helpers.parallel_bulk(es,readRatings(),index="ratings"), maxlen=0)
 es.indices.refresh()
+
+es.indices.delete(index="tags",ignore=404)
+deque(helpers.parallel_bulk(es,readTags(),index="tags"), maxlen=0)
+es.indices.refresh()
+
