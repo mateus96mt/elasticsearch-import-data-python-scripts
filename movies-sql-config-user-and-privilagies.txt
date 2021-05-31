@@ -1,0 +1,7 @@
+CREATE USER 'mateus'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'mateus'@'localhost';
+
+FLUSH PRIVILEGES;
+
+java.sql.SQLException: Access denied for user 'mateus'@'localhost' (using password: YES)

@@ -1,0 +1,15 @@
+CREATE DATABASE movielens;
+
+CREATE TABLE movielens.movies (
+    -> movieID INT PRIMARY KEY NOT NULL,
+    -> title TEXT,
+    -> releaseDate DATE
+    -> );
+    
+LOAD DATA LOCAL INFILE 'ml-100k/u.item' INTO TABLE movielens.movies FIELDS TERMINATED BY '|'
+    -> (movieID, title, @var3)
+    -> set releaseDate = STR_TO_DATE(@var3, '%d-%M-%Y');
+    
+USE movielens;
+
+SELECT * FROM movies WHERE title LIKE 'Star%';
