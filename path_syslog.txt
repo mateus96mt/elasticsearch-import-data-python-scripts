@@ -1,0 +1,1 @@
+sudo head -10 /var/log/syslog
