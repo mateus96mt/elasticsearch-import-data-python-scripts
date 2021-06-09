@@ -50,7 +50,7 @@ password = passFile.readline()
 es = elasticsearch.Elasticsearch(['mateus:' + password + '@127.0.0.1'])
 
 
-es.indices.delete(index="ratings",ignore=404)
+#es.indices.delete(index="ratings",ignore=404)
 deque(helpers.parallel_bulk(es,readRatings(),index="ratings"), maxlen=0)
 es.indices.refresh()
 

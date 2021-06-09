@@ -1,0 +1,21 @@
+sudo apt install kibana
+
+versão compativel: wget https://artifacts.elastic.co/downloads/kibana/kibana-7.12.0-amd64.deb
+
+sudo nano /etc/kibana/kibana.yml > server.host: "0.0.0.0"
+
+copiar arquivo para /usr/share/kibana/config/kibana.yml
+
+rodar manualmente: /usr/share/kibana/bin
+
+sudo /bin/systemctl daemon-reload
+
+sudo /bin/systemctl enable kibana.service
+
+sudo /bin/systemctl start kibana.service
+
+esperar alguns minutos até estar rodando de fato
+
+run: cd /usr/share/kibana/bin;sudo ./kibana --allow-root;
+
+http://127.0.0.1:5601/
