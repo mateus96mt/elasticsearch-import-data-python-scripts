@@ -1,0 +1,9 @@
+sudo apt install metricbeat=7.5.2
+
+sudo systemctl start metricbeat.service
+
+sudo apt install stress
+
+stress --cpu 1 --timeout 120
+
+stress --vm 5 --timeout 180

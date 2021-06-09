@@ -19,3 +19,5 @@ esperar alguns minutos até estar rodando de fato
 run: cd /usr/share/kibana/bin;sudo ./kibana --allow-root;
 
 http://127.0.0.1:5601/
+
+kibana api: curl 'localhost:5601/api/spaces/space/devops'

@@ -1,0 +1,22 @@
+sudo apt update && sudo apt install filebeat
+
+sudo systemctl stop elasticsearch.service
+sudo systemctl start elasticsearch.service
+
+Make /home/mateus/logs
+
+cd into it
+
+wget http://media.sundog-soft.com/es/access_log
+
+cd /etc/filebeat/modules.d
+sudo mv apache.yml.disabled apache.yml
+
+edit apache.yml
+
+add paths:
+
+["/home/mateus/logs/access*"]
+["/home/mateus/logs/error*"]
+
+sudo systemctl start filebeat.service
